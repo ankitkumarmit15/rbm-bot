@@ -65,12 +65,17 @@ def get_llm(model_name: str | None = None, temperature: float = 0.1):
             temperature=temperature,
             max_tokens=8192,
         )
-    # If GOOGLE_API_KEY is not set, or the user requested a local model, use a local Llama adapter
+    # If the user explicitly requested a local model, use a local Llama adapter.
+    # Otherwise, remote Gemini requires GOOGLE_API_KEY on Streamlit Cloud.
     use_local = False
-    if not os.environ.get("GOOGLE_API_KEY"):
-        use_local = True
     if model and isinstance(model, str) and model.startswith("local:"):
         use_local = True
+
+    if not os.environ.get("GOOGLE_API_KEY") and not use_local:
+        raise RuntimeError(
+            "GOOGLE_API_KEY is required for remote Gemini on Streamlit Cloud. "
+            "Set GOOGLE_API_KEY in Streamlit secrets or .env, or use a local model with 'local:<model>'."
+        )
 
     if use_local:
         # Prefer llama-cpp-python if available
