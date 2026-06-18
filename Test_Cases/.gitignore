@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv/
+
+# Streamlit
+.streamlit/
+.streamlit_cache/
+.streamlit_cache2/
+*.streamlit.run
+streamlit_errors.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files — NEVER commit .env with real secrets
+.env
+.env.local
+.env.*.local
+
+# ChromaDB (persistent vector store — local data, not source)
+.chroma/
+chroma_db/
+*.db
+
+# Runtime cache (auto-generated, safe to delete)
+cache/
+
+# Backups
+*.bak
